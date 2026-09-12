@@ -3,40 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fuyu.</title> <!-- ✏️ Page title -->
-  <link rel="icon" type="image/x-icon" href="source/spinner-clear@2x.png">
+  <title>fuyu.</title>
+  <link rel="icon" type="image/x-icon" href="source/aemeath.png">
   <meta name="description" content="fuyu's portfolio." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent:      #697bb2;  /* ✏️ Main accent color */
-      --text-1:      #ffffff;  /* ✏️ Primary text */
-      --text-2:      #b9bbbe;  /* ✏️ Secondary text */
-      --text-3:      #727272;  /* ✏️ Muted text */
-      --card-bg:     rgba(0,0,0,0.38); /* ✏️ Card background */
-      --bg:          #0a0514;  /* ✏️ Page background / loader color */
-      --font:        'Nunito', sans-serif; /* ✏️ Font */
+      --accent:      #697bb2;
+      --text-1:      #ffffff;
+      --text-2:      #b9bbbe;
+      --text-3:      #727272;
+      --card-bg:     rgba(0,0,0,0.38);
+      --bg:          #0a0514;
+      --font:        'Nunito', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); color: var(--text-1); background: var(--bg); height: 100vh; overflow: hidden; }
 
-    /* Background */
     .bg {
       position: fixed; inset: 0; z-index: 0;
-      background: url('source/1408964.jpg') center/cover no-repeat; /* ✏️ Background image */
-      filter: brightness(1); /* ✏️ Brightness & blur */
+      background: url('source/broken.jpg') center/cover no-repeat;
+      filter: brightness(0.5);
     }
 
-    /* Stars */
     .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
     .star  { position: absolute; border-radius: 50%; background: #fff; opacity: 0;
              animation: twinkle var(--dur,3s) ease-in-out var(--delay,0s) infinite; }
     @keyframes twinkle { 50% { opacity: var(--op,.5); transform: scale(1.2); } }
 
-    /* Loader */
     #loader {
       position: fixed; inset: 0; z-index: 1000;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
@@ -51,14 +48,12 @@
     .ring-text { font-size: 14px; letter-spacing: .25em; color: var(--text-3); text-transform: uppercase; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Layout */
     main {
       position: relative; z-index: 10; height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 48px 24px 32px; overflow: hidden;
     }
 
-    /* Card */
     .card {
       width: 100%; max-width: 680px; max-height: 90vh; text-align: center;
       background: var(--card-bg); border: 1px solid var(--accent); border-radius: 20px;
@@ -72,39 +67,33 @@
     .card::-webkit-scrollbar { display: none; }
     .card.show { opacity: 1; transform: none; }
 
-    /* Avatar */
     .avatar-wrap { width: 120px; height: 120px; margin: 0 auto 24px; }
-    .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); display: block; } /* ✏️ Avatar border color */
+    .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); display: block; }
 
-    /* Name & subtitle */
     .name {
       font-size: 50px; font-weight: 900; letter-spacing: 0; margin-bottom: 10px;
-      background: var(--accent); /* ✏️ Name gradient */
+      background: var(--accent);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .subtitle { font-size: 14px; font-weight: 300; letter-spacing: .2em; color: var(--text-2); text-transform: uppercase; margin-bottom: 28px; }
 
-    /* Divider */
     .divider { width: 60px; height: 1px; margin: 0 auto 28px;
                background: linear-gradient(90deg, transparent, var(--accent), transparent); }
 
-    /* Badges */
     .badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 32px; }
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 13px; padding: 5px 14px; border-radius: 99px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); /* ✏️ Badge color */
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
       color: var(--text-2);
     }
     .badge svg { width: 13px; height: 13px; opacity: .7; }
 
-    /* Bio */
     .bio { font-size: 20px; line-height: 1.85; color: var(--text-2); text-align: left; margin-bottom: 32px; }
     .bio p + p { margin-top: 16px; }
     .bio a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed; }
     .bio a:hover { color: #fff; }
 
-    /* Social buttons */
     .socials { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
     .social-btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -119,46 +108,45 @@
     /* Footer */
     footer { text-align: center; padding: 16px 0 0; font-size: 13px; color: var(--text-2); margin-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
 
-    @media (max-width: 600px) { .card { padding: 36px 24px 32px; } .name { font-size: 24px; } }
+    @media (max-width: 600px) { .card { width: calc(100% - 12px); padding: 36px 24px 32px; } .name { font-size: 24px; } }
   </style>
 </head>
 <body>
 
-  <div class="bg"></div>          <!-- ✏️ Edit background-image in .bg CSS above -->
-  <div class="stars" id="stars"></div>
+  <div class="bg"></div>
 
   <div id="loader">
-    <div class="ring"></div> <!-- ✏️ Loader text -->
+    <div class="ring"></div>
   </div>
 
   <main>
     <div class="card" id="card">
 
       <div class="avatar-wrap">
-        <img class="avatar" src="source/umi.png" /> <!-- ✏️ Profile photo -->
+        <img class="avatar" src="source/umi.png" />
       </div>
 
-      <h1 class="name">Fuyu</h1>                  <!-- ✏️ Your name -->
-      <p class="subtitle">Aoki Fuyuka</p>         <!-- ✏️ Subtitle / full name -->
+      <h1 class="name">Fuyu</h1>
+      <p class="subtitle">Aoki Fuyuka</p>
 
       <div class="divider"></div>
     
-      <!-- ✏️ Badges — add/remove <span class="badge"> freely -->
+      <!--Badges-->
       <div class="badges">
         <span class="badge">
-          <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="64" height="64" fill="#FFFFFF"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Phú Thọ, Việt Nam
+          <svg fill="#ffffff" viewBox="-5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>graduation-cap</title> <path d="M21.080 12.84l-8.92-3.24c-0.4-0.16-0.88-0.2-1.16-0.2-0.32 0-0.76 0.040-1.16 0.2l-8.92 3.24c-0.84 0.32-0.92 0.88-0.92 1.12s0.080 0.8 0.92 1.12l0.4 0.12v3.32c0 0.48 0.36 0.84 0.84 0.84s0.84-0.36 0.84-0.84v-2.72l1.56 0.56v3.76c0 1.64 3.84 2.44 6.44 2.44s6.44-0.76 6.44-2.44v-3.72l3.64-1.32c0.84-0.28 0.92-0.88 0.92-1.12s-0.080-0.8-0.92-1.12zM15.8 19.92c-0.48 0.32-2.28 0.96-4.76 0.96s-4.32-0.64-4.76-0.96v-2.92l3.6 1.32c0.4 0.16 0.88 0.2 1.16 0.2s0.76-0.040 1.16-0.2l3.6-1.32v2.92zM11.6 16.72c-0.28 0.12-0.88 0.12-1.16 0l-7.64-2.76 7.6-2.76c0.28-0.12 0.88-0.12 1.16 0l7.64 2.76-7.6 2.76z"></path> </g></svg>
+          Guaduated Highschool
         </span>
       </div>
 
-      <!-- ✏️ Bio text -->
+      <!--Bio text-->
       <div class="bio">
         <p>Most people knows me as <strong style="color:var(--accent)">Kurogane</strong>.</p>
         <p>Born and raised in Vietnam, I often spend my time doing various things that I find interesting, mostly related to technology and design products for myself (and not necessarily for others). I'm also a clipper for Vtuber mostly Ouro Kronii, but since I don't have time for that, there won't be any specific schedule.</p>
         <p></p>
       </div>
 
-      <!-- ✏️ Social buttons — edit href and label, add/remove freely -->
+      <!--Social buttons-->
       <div class="socials">
         <a class="social-btn" href="https://youtube.com/@aokifuyuka" target="_blank" rel="noopener">
           <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 360.726"><path fill="#fff" d="M456.035 10.769c22.031 5.926 39.377 23.386 45.265 45.56C512 96.516 512 180.363 512 180.363s0 83.846-10.7 124.037c-5.888 22.17-23.234 39.631-45.265 45.559-39.928 10.767-200.034 10.767-200.034 10.767s-160.107 0-200.035-10.767C33.937 344.031 16.587 326.57 10.7 304.4 0 264.209 0 180.363 0 180.363S0 96.516 10.7 56.329c5.887-22.174 23.237-39.634 45.266-45.56C95.894 0 256.001 0 256.001 0s160.106 0 200.034 10.769zm-252.398 245.72l133.818-76.122-133.818-76.131v152.253z"/></svg>
@@ -168,7 +156,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 365.467"><path fill="#fff" d="M378.186 365.028s-15.794-18.865-28.956-35.099c57.473-16.232 79.41-51.77 79.41-51.77-17.989 11.846-35.099 20.182-50.454 25.885-21.938 9.213-42.997 14.917-63.617 18.866-42.118 7.898-80.726 5.703-113.631-.438-25.008-4.827-46.506-11.407-64.494-18.867-10.091-3.947-21.059-8.774-32.027-14.917-1.316-.877-2.633-1.316-3.948-2.193-.877-.438-1.316-.878-1.755-.878-7.898-4.388-12.285-7.458-12.285-7.458s21.06 34.659 76.779 51.331c-13.163 16.673-29.395 35.977-29.395 35.977C36.854 362.395 0 299.218 0 299.218 0 159.263 63.177 45.633 63.177 45.633 126.354-1.311 186.022.005 186.022.005l4.388 5.264C111.439 27.645 75.461 62.305 75.461 62.305s9.653-5.265 25.886-12.285c46.945-20.621 84.236-25.885 99.592-27.64 2.633-.439 4.827-.878 7.458-.878 26.763-3.51 57.036-4.387 88.624-.878 41.68 4.826 86.43 17.111 132.058 41.68 0 0-34.66-32.906-109.244-55.281l6.143-7.019s60.105-1.317 122.844 45.628c0 0 63.178 113.631 63.178 253.585 0-.438-36.854 62.739-133.813 65.81l-.001.001zm-43.874-203.133c-25.006 0-44.75 21.498-44.75 48.262 0 26.763 20.182 48.26 44.75 48.26 25.008 0 44.752-21.497 44.752-48.26 0-26.764-20.182-48.262-44.752-48.262zm-160.135 0c-25.008 0-44.751 21.498-44.751 48.262 0 26.763 20.182 48.26 44.751 48.26 25.007 0 44.75-21.497 44.75-48.26.439-26.763-19.742-48.262-44.75-48.262z"/></svg>
           Discord
         </a>
-        <a class="social-btn" href="https://www.facebook.com/hanomoney/" target="_blank" rel="noopener">
+        <a class="social-btn" href="https://www.facebook.com/aofu.hg/" target="_blank" rel="noopener">
           <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 510.125"><path fill="#fff" fill-rule="nonzero" d="M512 256C512 114.615 397.385 0 256 0S0 114.615 0 256c0 120.059 82.652 220.797 194.157 248.461V334.229h-52.79V256h52.79v-33.709c0-87.134 39.432-127.521 124.977-127.521 16.218 0 44.202 3.18 55.651 6.36v70.916c-6.042-.635-16.537-.954-29.575-.954-41.977 0-58.196 15.901-58.196 57.241V256h83.619l-14.365 78.229h-69.254v175.896C413.771 494.815 512 386.885 512 256z"/></svg>
           Facebook
         </a>
@@ -180,27 +168,16 @@
       </div>
 
       <footer>
-        <p>© 2026 Aoki Fuyuka. All rights reserve. <!-- ✏️ Footer text -->
+        <p>© 2026 Aoki Fuyuka. All rights reserve.
         <p>Made with ❤️ using HTML</p>
 
     </div>
   </main>
   <script>
-    // Loader — hide after page load (✏️ change 900 to adjust delay in ms)
     window.addEventListener('load', () => setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
       document.getElementById('card').classList.add('show');
     }, 900));
-
-    // Stars — ✏️ change 120 for more/fewer stars
-    const stars = document.getElementById('stars');
-    for (let i = 0; i < 120; i++) {
-      const s = Object.assign(document.createElement('div'), { className: 'star' });
-      const r = () => Math.random();
-      const sz = r() * 2.5 + 0.5;
-      s.style.cssText = `width:${sz}px;height:${sz}px;left:${r()*100}%;top:${r()*100}%;--dur:${(r()*4+2).toFixed(1)}s;--delay:${(r()*5).toFixed(1)}s;--op:${(r()*.5+.2).toFixed(2)}`;
-      stars.appendChild(s);
-    }
   </script>
 
 </body>
